@@ -1,0 +1,306 @@
+body {
+    margin: 0;
+    background-color: #e5e5e3;
+    font-family: 'Playfair Display', serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.product-page_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/***********************************************************************
+                    Navigation Bar
+***********************************************************************/
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #e5e5e3;
+
+    &.shadow {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+}
+
+.navbar-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.navbar-left,
+.navbar-right {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.navbar-right {
+    column-gap: 10px;
+}
+
+.navbar-left_logo {
+    height: 50px;
+    width: 50px;
+}
+
+.navbar-right_wishlist,
+.navbar-right_cart {
+    height: 25px;
+    width: 25px;
+}
+
+/***********************************************************************
+                    Wishlist Modal
+***********************************************************************/
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-button {    
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #003986;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.wishlist-table {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+}
+
+.wishlist-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.wishlist-item_price {    
+    white-space: nowrap;
+}
+
+/***********************************************************************
+                    Product List Header
+***********************************************************************/
+.product-list_header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.product-header_title {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+h1,
+h3 {
+    margin: 0;
+}
+
+/***********************************************************************
+                    Product List Filter
+***********************************************************************/
+.product-list_filter {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.product-filter_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.product-filter_search,
+.product-filter_sorting {
+    padding: 8px 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.product-filter_search::placeholder,
+.product-filter_sorting::placeholder {
+    color: #999;
+}
+
+.product-filter_search:focus,
+.product-filter_sorting:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+@media (max-width: 888px) {
+
+    .product-filter_search,
+    .product-filter_sorting {
+        max-width: 100%;
+    }
+}
+
+/***********************************************************************
+                    Product List Category
+***********************************************************************/
+.product-list_category {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.product-category_container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.product-category_items {
+    font-weight: 400;
+    color: #999;
+    cursor: pointer;
+}
+
+.selected-category {
+    font-weight: 600;
+    text-decoration: underline;
+    color: #000;
+    cursor: default;
+}
+
+/***********************************************************************
+                    Product List Item
+***********************************************************************/
+.product-list_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-list_items {
+    padding: 20px;
+}
+
+.product-list_grid {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+}
+
+@media (max-width: 888px) {
+    .product-list_grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .product-list_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .product-list_grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.list-item {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.list-item_image {
+    position: relative;
+    /* This makes it a positioning context for absolute children */
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.clickable-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.clickable-image:hover {
+    transform: scale(1.05);
+}
+
+.list-item_description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 20px;
+}
